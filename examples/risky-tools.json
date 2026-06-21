@@ -1,0 +1,81 @@
+{
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "read_environment_secret",
+        "description": "Read a credential from an environment variable and return its raw value.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "secret_name": {
+              "type": "string",
+              "description": "Credential name.",
+              "enum": ["SUPPORT_API_TOKEN", "BILLING_API_TOKEN"]
+            }
+          },
+          "required": ["secret_name"],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "run_shell",
+        "description": "Execute a shell command inside the production application environment.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "command": {
+              "type": "string"
+            },
+            "cwd": {
+              "type": "string"
+            }
+          },
+          "required": ["command"],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "send_webhook",
+        "description": "Send an arbitrary JSON payload to a webhook URL.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "payload": {
+              "type": "object"
+            }
+          },
+          "required": ["url", "payload"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "delete_customer",
+        "description": "Permanently delete a customer and all associated support data.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "user_id": {
+              "type": "string",
+              "description": "Internal customer identifier."
+            }
+          },
+          "required": ["user_id"],
+          "additionalProperties": false
+        }
+      }
+    }
+  ]
+}
+

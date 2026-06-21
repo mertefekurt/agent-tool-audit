@@ -1,0 +1,40 @@
+{
+  "tools": [
+    {
+      "name": "lookup_order",
+      "description": "Look up one support order by its opaque public identifier.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string",
+            "description": "Opaque order identifier supplied by the customer."
+          }
+        },
+        "required": ["order_id"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "add_support_note",
+      "description": "Append an internal note to the currently selected support ticket.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "ticket_id": {
+            "type": "string",
+            "description": "Identifier of the current support ticket."
+          },
+          "note": {
+            "type": "string",
+            "description": "Plain-text note with a maximum length of 1000 characters.",
+            "maxLength": 1000
+          }
+        },
+        "required": ["ticket_id", "note"],
+        "additionalProperties": false
+      }
+    }
+  ]
+}
+
