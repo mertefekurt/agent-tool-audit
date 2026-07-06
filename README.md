@@ -1,36 +1,28 @@
-<p align="center">
-  <img src="assets/readme-cover.svg" alt="Agent Tool Audit cover" width="100%" />
-</p>
-
 # Agent Tool Audit
 
-![stack](https://img.shields.io/badge/stack-Python-2563eb?style=flat-square) ![python](https://img.shields.io/badge/python-3.11-16a34a?style=flat-square) ![license](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square) ![ci](https://img.shields.io/badge/ci-GitHub%20Actions-7c3aed?style=flat-square)
+Audit AI agent tool manifests for least-privilege and schema risks. I keep it small because this kind of check is most useful when it can run beside the work, not after the work has already shipped.
 
-Audit AI agent tool manifests for least-privilege and schema risks.
+![Agent Tool Audit cover](assets/readme-cover.svg)
 
-## Good for
+## Where it fits
 
-- quick local checks around agent reliability
-- small CI jobs where a readable report is enough
-- review workflows that need deterministic output
-- examples based on `examples/risky-tools.json`
+- for model evaluation, traces, retrieval, and prompt review
+- quick local checks without a service dependency
+- review notes that should stay easy to reproduce
 
 ## Run it
 
 ```bash
+git clone https://github.com/mertefekurt/agent-tool-audit.git
+cd agent-tool-audit
+python -m venv .venv
+source .venv/bin/activate
 python -m pip install -e ".[dev]"
 agent-tool-audit examples/risky-tools.json
-agent-tool-audit examples/risky-tools.json --json --fail-on medium
+agent-tool-audit examples/risky-tools.json --json
 ```
 
-## Project notes
-
-- Command: `agent-tool-audit`
-- Language: Python
-- Python: `>=3.11`
-- Tests: `pytest`
-
-## Layout
+## Project map
 
 ```text
 .github/        CI workflow
@@ -39,13 +31,4 @@ src/            package source
 tests/          test coverage
 .gitignore      project file
 pyproject.toml  package metadata
-```
-
-## Check locally
-
-```bash
-python -m pip install -e ".[dev]"
-ruff check .
-pytest
-python -m agent_tool_audit --help
 ```
